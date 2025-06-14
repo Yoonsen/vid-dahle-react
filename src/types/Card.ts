@@ -1,6 +1,7 @@
+export type ModelType = 'llama' | 'anthropic';
+
 export interface Card {
     id: string;
-    model: 'llama' | 'anthropic';
     codes: string;
     title: string;
     author: string;
@@ -13,6 +14,5 @@ export interface Card {
     year_end: string;
     edition: string;
     notes: string;
-}
-
-export type ModelType = 'llama' | 'anthropic'; 
+    model: ModelType;
+} 

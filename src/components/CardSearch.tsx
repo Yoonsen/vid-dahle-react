@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, ModelType } from '../types/Card';
 import { cardService } from '../services/cardService';
 import { CardDisplay } from './CardDisplay';
@@ -28,94 +28,59 @@ export const CardSearch: React.FC = () => {
     };
 
     return (
-        <div style={{ 
-            maxWidth: '1300px',
-            margin: '0 auto',
-            padding: '16px',
-            backgroundColor: '#f4ecd8',
-            minHeight: '100vh'
-        }}>
-            <div style={{ 
-                display: 'flex',
-                alignItems: 'flex-end',
-                gap: '16px',
-                marginBottom: '24px'
-            }}>
-                <div style={{ width: '25%' }}>
-                    <label style={{ display: 'block', marginBottom: '8px' }}>Select Model:</label>
+        <div className="container-fluid py-4">
+            <div className="row mb-4">
+                <div className="col-md-3">
+                    <label className="form-label">Select Model:</label>
                     <select
                         value={selectedModel}
-                        onChange={(e) => setSelectedModel(e.target.value as ModelType)}
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            border: '1px solid #ccc',
-                            borderRadius: '4px',
-                            height: '38px'
+                        onChange={(e) => {
+                            setSelectedModel(e.target.value as ModelType);
+                            if (searchTerm) {
+                                handleSearch();
+                            }
                         }}
+                        className="form-select"
                     >
                         <option value="llama">llama</option>
                         <option value="anthropic">anthropic</option>
                     </select>
                 </div>
                 
-                <div style={{ width: '50%' }}>
-                    <label style={{ display: 'block', marginBottom: '8px' }}>Search (author/title):</label>
+                <div className="col-md-6">
+                    <label className="form-label">Search (author/title):</label>
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder="Enter search term"
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            border: '1px solid #ccc',
-                            borderRadius: '4px',
-                            height: '38px'
-                        }}
+                        className="form-control"
                     />
                 </div>
                 
-                <div style={{ width: '16.666%' }}>
+                <div className="col-md-3 d-flex align-items-end">
                     <button
                         onClick={handleSearch}
                         disabled={isLoading}
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            backgroundColor: isLoading ? '#ccc' : '#3b82f6',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '4px',
-                            cursor: isLoading ? 'not-allowed' : 'pointer',
-                            height: '38px'
-                        }}
+                        className="btn btn-primary w-100"
                     >
                         {isLoading ? 'Searching...' : 'Search'}
                     </button>
                 </div>
             </div>
 
-            <div style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                padding: '16px',
-                borderRadius: '8px',
-                overflow: 'hidden'
-            }}>
+            <div className="bg-white bg-opacity-75 p-4 rounded">
                 {cards.length > 0 ? (
                     <div>
-                        <div style={{ marginBottom: '16px', fontWeight: 'bold' }}>
+                        <div className="mb-3 fw-bold">
                             Showing {cards.length} hits
                         </div>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(2, 1fr)',
-                            gap: '16px',
-                            justifyContent: 'center'
-                        }}>
+                        <div className="row row-cols-1 row-cols-md-2 g-4">
                             {cards.map((card) => (
-                                <CardDisplay key={card.id} card={card} />
+                                <div key={card.id} className="col">
+                                    <CardDisplay card={card} />
+                                </div>
                             ))}
                         </div>
                     </div>
