@@ -64,7 +64,7 @@ export const cardService = {
     },
 
     getCardImageUrl(cardId: string): string {
-        // TODO: Replace with actual image path
-        return `/images/jpg_files/${cardId}OCR.jpg`;
+        // Use PUBLIC_URL to ensure correct path in all environments
+        return `${process.env.PUBLIC_URL}/images/jpg_files/${cardId}OCR.jpg`;
     }
 }; 
