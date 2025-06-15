@@ -32,7 +32,9 @@ export const cardService = {
                 year: item.year,
                 year_end: item.year_end,
                 edition: item.edition,
-                notes: item.notes
+                notes: item.notes,
+                latitude: item.latitude,
+                longitude: item.longitude
             }));
 
             console.log('Loaded cards:', cardsCache.length);
