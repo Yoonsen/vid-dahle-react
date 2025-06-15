@@ -11,7 +11,7 @@ export const cardService = {
 
         try {
             console.log('Fetching cards from JSON...');
-            const response = await fetch('/data/cards.json');
+            const response = await fetch(`${process.env.PUBLIC_URL}/data/cards.json`);
             if (!response.ok) {
                 throw new Error('Failed to load cards data');
             }
