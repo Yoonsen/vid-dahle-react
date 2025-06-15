@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/vid-dahle-react/static/css/main.eeb4a906.css",
-    "main.js": "/vid-dahle-react/static/js/main.6e255c55.js",
+    "main.css": "/vid-dahle-react/static/css/main.161ad8f8.css",
+    "main.js": "/vid-dahle-react/static/js/main.23423721.js",
     "static/js/453.de084ac5.chunk.js": "/vid-dahle-react/static/js/453.de084ac5.chunk.js",
     "index.html": "/vid-dahle-react/index.html",
-    "main.eeb4a906.css.map": "/vid-dahle-react/static/css/main.eeb4a906.css.map",
-    "main.6e255c55.js.map": "/vid-dahle-react/static/js/main.6e255c55.js.map",
+    "main.161ad8f8.css.map": "/vid-dahle-react/static/css/main.161ad8f8.css.map",
+    "main.23423721.js.map": "/vid-dahle-react/static/js/main.23423721.js.map",
     "453.de084ac5.chunk.js.map": "/vid-dahle-react/static/js/453.de084ac5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eeb4a906.css",
-    "static/js/main.6e255c55.js"
+    "static/css/main.161ad8f8.css",
+    "static/js/main.23423721.js"
   ]
 }
